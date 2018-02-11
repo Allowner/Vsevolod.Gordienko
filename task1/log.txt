@@ -1,0 +1,11 @@
+commit 9deadc1a134060076e6d5a48a095390c8bb52dad
+Author: Allowner <se1999va@tut.by>
+Date:   Sun Feb 11 15:54:05 2018 +0300
+
+    Status.txt now contains two statuses.
+
+commit b4c1f7ab4e9bad96ce97dd992764090a69088747
+Author: Allowner <se1999va@tut.by>
+Date:   Sun Feb 11 15:44:20 2018 +0300
+
+    add .gitignore
