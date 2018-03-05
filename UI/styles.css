@@ -1,0 +1,135 @@
+.body {
+	margin: 0;
+	padding: 0;
+	background: #ccc;
+}
+.header{
+	width: 100%;
+	position: fixed;
+	height: 6vh;
+	background-color: #75a9f9;
+	
+}
+.logo{
+	margin-top: 0px;
+	position: absolute;
+    left: 15%;
+	font-family: Aldrich;
+	font-size: 5vh;
+}
+.text{
+	text-align: center;
+	margin-bottom: 0px;
+	font-size: 2.5vh;
+	font-family: Aldrich;
+}
+.aside{
+	margin-top: 6vh;
+	margin-bottom: 6vh;
+	position: fixed;
+    background: #ccc;
+    width: 15%;
+}
+.footer{
+	background-color: #75a9f9;
+	bottom: 0px;
+	height: 10vh;
+	left: 0;
+	right: 0;
+	color: black;
+	font-size: 3vh;
+	font-family: Aldrich;
+	text-align: center;
+}
+.header_bar{
+	height: 6vh;
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	font-size: 3vh;
+	
+}
+.login_label{
+	height: 6vh;
+	font-size: 3vh;
+	padding-right: 10vh;
+}
+.login_button{
+	height: 6vh;
+	font-size: 3vh;
+
+}
+.find_button{
+	
+	height: 8vh;
+	width: 16vh;
+	display:block;
+	position: relative;
+	border: 1px solid white;
+	margin:0 auto;
+	margin-top: 6vh;
+}
+.photo{
+	width: 85%; 
+	height: 70vh;
+    background: #ccc;
+    border-bottom: solid 1px #75a9f9; 
+	text-align: left;
+}
+.photo_parameters{
+	height: 70vh;
+	width: 65%; 
+}
+.icon_parameters{
+	height: 5vh;
+	width: 5vh;
+}
+.text_photo{
+	
+	border-radius: 10px;
+	margin: 4vh;
+	display: inline-block;
+	width: 30%;  
+	background-color: #75a9f9;
+}
+.backgr{
+	background: #f0f0f0; 
+}
+.add_button{
+	text-align: center;
+	width: 85%; 
+	height: 4vh;
+	background-color: #75a9f9;
+}
+.textarea {
+
+	-webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 100%;
+	height: 4vh;
+	font-size: 2.5vh;
+}
+.photo_area{
+	background: #ccc;
+}
+.fake{
+	height: 6vh;
+}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
