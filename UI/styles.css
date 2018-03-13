@@ -1,13 +1,13 @@
 .body {
 	margin: 0;
 	padding: 0;
-	background: #ccc;
+	background: #a6caf0;
 }
 .header{
 	width: 100%;
 	position: fixed;
 	height: 6vh;
-	background-color: #75a9f9;
+	background-color: #007fff;
 	
 }
 .logo{
@@ -27,7 +27,7 @@
 	margin-top: 6vh;
 	margin-bottom: 6vh;
 	position: fixed;
-    background: #ccc;
+    background: #a6caf0;
     width: 15%;
 }
 .footer{
@@ -72,7 +72,7 @@
 .photo{
 	width: 85%; 
 	height: 70vh;
-    background: #ccc;
+    background: #a6caf0;
     border-bottom: solid 1px #75a9f9; 
 	text-align: left;
 }
@@ -85,12 +85,13 @@
 	width: 5vh;
 }
 .text_photo{
-	
+	padding: 1vh;
 	border-radius: 10px;
-	margin: 4vh;
+	margin: 2vh;
 	display: inline-block;
 	width: 30%;  
-	background-color: #75a9f9;
+	background-color: #fdf4e3;
+	border: solid 2px #75a9f9;
 }
 .backgr{
 	background: #f0f0f0; 
@@ -102,7 +103,6 @@
 	background-color: #75a9f9;
 }
 .textarea {
-
 	-webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
@@ -111,7 +111,7 @@
 	font-size: 2.5vh;
 }
 .photo_area{
-	background: #ccc;
+	background: #a6caf0;
 }
 .fake{
 	height: 6vh;
