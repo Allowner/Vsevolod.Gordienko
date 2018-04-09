@@ -1,10 +1,21 @@
-
 var user = null;
+var current_size_of_DOM = 10;
+var max_size_of_DOM = 10;
+var login_password = [
+    {
+        login: 'Seva',
+        password: '1111'
+    },
+    {
+        login: 'Иванов Иван',
+        password: '0000'
+    }
+];
 var photoPosts = [
     {
         id: '1',
-        descriprion: 'Женская сборная Беларуси выиграла эстафету в рамках соревнований по биатлону на Олимпийских играх в Пхёнчхане!!!',
-        createdAt: new Date('2018-02-23T23:00:00'),
+        descriprion: '1Женская сборная Беларуси выиграла эстафету в рамках соревнований по биатлону на Олимпийских играх в Пхёнчхане!!!',
+        createdAt: new Date('2009-02-23T23:00:00'),
         author: 'Seva',
         photoLink: "images/first.jpeg",
         hashtags: ['#first', '#second'],
@@ -12,8 +23,8 @@ var photoPosts = [
     },
     {
         id: '2',
-        descriprion: 'Женская сборная Беларуси выиграла эстафету в рамках соревнований по биатлону на Олимпийских играх в Пхёнчхане!!!',
-        createdAt: new Date('2018-03-23T23:00:00'),
+        descriprion: '2Женская сборная Беларуси выиграла эстафету в рамках соревнований по биатлону на Олимпийских играх в Пхёнчхане!!!',
+        createdAt: new Date('2010-03-23T23:00:00'),
         author: 'Иванов Иван',
         photoLink: "images/second.jpg",
         hashtags: ['#third', '#second'],
@@ -21,8 +32,8 @@ var photoPosts = [
     },
     {
         id: '3',
-        descriprion: 'Женская сборная Беларуси выиграла эстафету в рамках соревнований по биатлону на Олимпийских играх в Пхёнчхане!!!',
-        createdAt: new Date('2017-02-23T23:00:00'),
+        descriprion: '3Женская сборная Беларуси выиграла эстафету в рамках соревнований по биатлону на Олимпийских играх в Пхёнчхане!!!',
+        createdAt: new Date('2011-02-23T23:00:00'),
         author: 'Иванов Иван',
         photoLink: "images/third.jpg",
         hashtags: ['#first', '#second'],
@@ -30,8 +41,8 @@ var photoPosts = [
     },
     {
         id: '4',
-        descriprion: 'Женская сборная Беларуси выиграла эстафету в рамках соревнований по биатлону на Олимпийских играх в Пхёнчхане!!!',
-        createdAt: new Date('2017-02-23T23:00:00'),
+        descriprion: '4Женская сборная Беларуси выиграла эстафету в рамках соревнований по биатлону на Олимпийских играх в Пхёнчхане!!!',
+        createdAt: new Date('2012-02-23T23:00:00'),
         author: 'Иванов Иван',
         photoLink: "images/fourth.jpg",
         hashtags: ['#first', '#second'],
@@ -39,8 +50,8 @@ var photoPosts = [
     },
     {
         id: '5',
-        descriprion: 'Женская сборная Беларуси выиграла эстафету в рамках соревнований по биатлону на Олимпийских играх в Пхёнчхане!!!',
-        createdAt: new Date('2017-02-23T23:00:00'),
+        descriprion: '5Женская сборная Беларуси выиграла эстафету в рамках соревнований по биатлону на Олимпийских играх в Пхёнчхане!!!',
+        createdAt: new Date('2013-02-23T23:00:00'),
         author: 'Иванов Иван',
         photoLink: "images/fifth.jpeg",
         hashtags: ['#first', '#second'],
@@ -48,8 +59,8 @@ var photoPosts = [
     },
     {
         id: '6',
-        descriprion: 'Женская сборная Беларуси выиграла эстафету в рамках соревнований по биатлону на Олимпийских играх в Пхёнчхане!!!',
-        createdAt: new Date('2018-02-23T23:40:00'),
+        descriprion: '6Женская сборная Беларуси выиграла эстафету в рамках соревнований по биатлону на Олимпийских играх в Пхёнчхане!!!',
+        createdAt: new Date('2014-02-23T23:40:00'),
         author: 'Иванов Иван',
         photoLink: "images/six.jpg",
         hashtags: ['#first', '#second'],
@@ -57,8 +68,8 @@ var photoPosts = [
     },
     {
         id: '7',
-        descriprion: 'Женская сборная Беларуси выиграла эстафету в рамках соревнований по биатлону на Олимпийских играх в Пхёнчхане!!!',
-        createdAt: new Date('2016-02-23T23:00:00'),
+        descriprion: '7Женская сборная Беларуси выиграла эстафету в рамках соревнований по биатлону на Олимпийских играх в Пхёнчхане!!!',
+        createdAt: new Date('2015-02-23T23:00:00'),
         author: 'Петров Иван',
         photoLink: "images/seventh.jpg",
         hashtags: ['#first', '#second'],
@@ -66,8 +77,8 @@ var photoPosts = [
     },
     {
         id: '8',
-        descriprion: 'Женская сборная Беларуси выиграла эстафету в рамках соревнований по биатлону на Олимпийских играх в Пхёнчхане!!!',
-        createdAt: new Date('2018-02-23T23:00:00'),
+        descriprion: '8Женская сборная Беларуси выиграла эстафету в рамках соревнований по биатлону на Олимпийских играх в Пхёнчхане!!!',
+        createdAt: new Date('2017-02-23T23:00:00'),
         author: 'Иванов Иван',
         photoLink: "images/eights.jpg",
         hashtags: ['#first', '#second'],
@@ -75,8 +86,8 @@ var photoPosts = [
     },
     {
         id: '9',
-        descriprion: 'Женская сборная Беларуси выиграла эстафету в рамках соревнований по биатлону на Олимпийских играх в Пхёнчхане!!!',
-        createdAt: new Date('2018-02-23T23:00:00'),
+        descriprion: '9Женская сборная Беларуси выиграла эстафету в рамках соревнований по биатлону на Олимпийских играх в Пхёнчхане!!!',
+        createdAt: new Date('2016-02-23T23:00:00'),
         author: 'Иванов Иван',
         photoLink: "images/nineth.jpg",
         hashtags: ['#first', '#second'],
@@ -84,7 +95,7 @@ var photoPosts = [
     },
     {
         id: '10',
-        descriprion: 'Женская сборная Беларуси выиграла эстафету в рамках соревнований по биатлону на Олимпийских играх в Пхёнчхане!!!',
+        descriprion: '10Женская сборная Беларуси выиграла эстафету в рамках соревнований по биатлону на Олимпийских играх в Пхёнчхане!!!',
         createdAt: new Date('2018-02-23T23:00:00'),
         author: 'Иванов',
         photoLink: "images/tenth.jpg",
@@ -224,6 +235,29 @@ var firstModule = (function () {
 var secondModule = (function () {
     var photoArea = document.getElementsByClassName("photo_area")[0];
 
+    function dateString(date){
+        var str;
+        if(date.getDay() < 10)
+            str = "0" + date.getDay();
+        else
+            str = date.getDay();
+        str += '/';
+        if(date.getMonth() < 10)
+            str += '0';
+        str += date.getMonth() + '/';
+        str += date.getFullYear() + ' ';
+        if(date.getHours() < 10)
+            str += '0';
+        str += date.getHours() + ':';
+        if(date.getMinutes() < 10)
+            str += '0';
+        str += date.getMinutes() + ':';
+        if(date.getSeconds() < 10)
+            str += '0';
+        str += date.getSeconds();
+        return str;
+    }
+
     function insertToDOM(element, prevElement = null) {    //второй параметр - метка, если -1, то по порядку или номер поста перед каким insert
         let photo = document.createElement('div');
         photo.className = "photo";
@@ -258,8 +292,7 @@ var secondModule = (function () {
         let date = document.createElement('h4');
         date.className = "date";
         var d = new Date(element.createdAt);
-        date.innerText = d.getDay() + '/' + d.getMonth() + '/' + d.getFullYear()
-            + ' ' + d.getHours() + ':' + d.getMinutes() + ':' + d.getSeconds();
+        date.innerText = dateString(d);
         text_header.appendChild(date);
 
         let main_textbox = document.createElement('div');
@@ -305,14 +338,29 @@ var secondModule = (function () {
     }
 
     function addPhotoPostToDOM(photoP) {
+        var changed = false;
+        var photoDOM = firstModule.getPhotoPosts(0, current_size_of_DOM);
         if (firstModule.addPhotoPost(photoP)) {
-            for (var i = 0; i < photoPosts.length; ++i) {
-                if (firstModule.compareDate(photoPosts[i], photoP) >= 0) {
-                    var photo = document.getElementById(photoPosts[i].id);
+            for (var i = 0; i < current_size_of_DOM; ++i) {
+                if (firstModule.compareDate(photoDOM[i], photoP) >= 0) {
+                    changed = true;
+                    var photo = document.getElementById(photoDOM[i].id);
                     insertToDOM(photoP, photo);
+                    current_size_of_DOM += 1;
                     break;
                 }
             }
+            if(changed == false && current_size_of_DOM < max_size_of_DOM){
+                insertToDOM(photoP);
+                current_size_of_DOM += 1;
+            }
+            if(changed == true && max_size_of_DOM == current_size_of_DOM - 1){
+                current_size_of_DOM -= 1;
+                var del_photo = document.getElementById(photoDOM[current_size_of_DOM - 1].id);
+                photoArea.removeChild(del_photo);
+            }
+            if(user == null)
+                turnOfElements();
             return true;
         }
         else
@@ -324,6 +372,7 @@ var secondModule = (function () {
             var photo = document.getElementById(id);
             if (photo != null)
                 photoArea.removeChild(photo);
+            current_size_of_DOM -= 1;
             return true;
         }
         else
@@ -389,9 +438,87 @@ var secondModule = (function () {
     }
 })();
 
+function authorize(){
+    document.getElementsByClassName('register')[0].classList.remove("undisplayable");
+}
+
+function showError(text){
+    var form = document.getElementsByClassName('error')[0].classList.remove("undisplayable");
+    document.getElementsByClassName('error_main_text')[0].innerText = text;
+}
+
+function deleteButtonClick(event){
+    var phP = event.target.parentNode.parentNode.parentNode;
+    secondModule.deletePhotoPostFromDOM(phP.id);
+}
+
+function errorClick(event){
+    document.getElementsByClassName('error')[0].classList.add("undisplayable");
+}
+
+
+
+function createClick(){
+    document.getElementsByClassName('adding')[0].classList.remove("undisplayable");
+    var dat = new Date();
+    document.getElementsByClassName('log_date')[0].innerText = user + "      " + secondModule.dateString(dat);
+}
+
+function editClick(){
+    document.getElementsByClassName('adding')[0].classList.remove("undisplayable");
+}
+
+function authorizeClick(){
+    if(user != null)
+        secondModule.leave();
+    else{
+        var text_area_1 = document.getElementById('enter_login').value;
+        var text_area_2 = document.getElementById('enter_password').value;
+        var authorized = false;
+        for(var i = 0; i < login_password.length; i++){
+            if(login_password[i].login == text_area_1 && login_password[i].password == text_area_2){
+                authorized = true;
+                break;
+            }
+        }
+        if(!authorized)
+            showError("Invalid login or password")
+        else{
+            document.getElementsByClassName('register')[0].classList.add("undisplayable");
+            secondModule.newUser(text_area_1);
+        }  
+    } 
+}
+
+function downloadButtonClick(){
+    var array = firstModule.getPhotoPosts(current_size_of_DOM, current_size_of_DOM + 10);
+    secondModule.showPhotoPosts(array);
+    current_size_of_DOM += array.length;
+    max_size_of_DOM += 10;
+}
+
+var delete_buttons = document.getElementsByClassName("delete_button_parameters");
+var edit_buttons = document.getElementsByClassName("edit_button_parameters");
+var authorize_button = document.getElementsByClassName("login_button")[0];
+var download_button = document.getElementsByClassName("add_button")[0];
+var register_button = document.getElementsByClassName("go_button")[0];
+var error_button = document.getElementsByClassName("error_butt")[0];
+var add_button = document.getElementsByClassName("create_button")[0];
+
 function onLoad() {
     secondModule.firstPhotoPosts();
     secondModule.leave();
     document.getElementsByClassName('register')[0].classList.add("undisplayable");
     document.getElementsByClassName('error')[0].classList.add("undisplayable");
+    document.getElementsByClassName('adding')[0].classList.add("undisplayable");
+    for(var i = 0; i < delete_buttons.length; i++){
+        delete_buttons[i].addEventListener('click', deleteButtonClick);
+        edit_buttons[i].addEventListener('click', editClick)
+    }
+    authorize_button.addEventListener("click", authorize);
+    download_button.addEventListener("click", downloadButtonClick);
+    register_button.addEventListener("click", authorizeClick);
+    error_button.addEventListener("click", errorClick);
+    add_button.addEventListener("click", createClick)
 }
+

@@ -31,33 +31,42 @@
 </textarea>
         <button class="find_button" align="center">Search</button>
     </section>
-    <form action="handler.php">
-        <div class="register">
-            <div class="register_form">
-                <div class="register_head"><p class="redister_h2">Autorization</p></div>
-                <p>Enter login:
-                    <input type="text" size="20">
-                </p>
-                <p>Enter password:
-                    <input type="text" size="20">
-                </p>
-                <p><button class="register_button" type="submit">Move forward</button></p>
-            </div>
+    <div class="register">
+        <div class="register_form">
+            <div class="register_head"><p class="register_h2">Autorization</p></div>
+            <p class="reg_text">Enter login:</p>
+                <input id="enter_login" class="reg_text" type="text" size="20">
+            <p class="reg_text">Enter password:</p>
+                <input id="enter_password" class="reg_text" type="text" size="20">
+            <p class="register_bottom"><button class="leave_button">Leave</button><button class="go_button">Move forward</button></p>
         </div>
-    </form>
-    <form action="handler.php">
-        <div class="error">
-            <div class="error_logo">
-                <p class="error_logo_text"> Error</p>
-            </div>
-            <div class="error_text">
-                <p class="error_main_text">Some text</p>
-            </div>
-            <div class="error_butt">
-                <button class="error_button">OK</button>
-            </div>
+    </div>
+    <div class="error">
+        <div class="error_logo">
+            <p class="error_logo_text"> Error</p>
         </div>
-    </form>
+        <div class="error_text">
+            <p class="error_main_text">Some text</p>
+        </div>
+        <div class="error_butt">
+            <button class="error_button">OK</button>
+        </div>
+    </div>
+    <div class="adding">
+        <div class="adding_form">
+            <div class="adding_head"><h3 class="log_date">Username and date</h3></div>
+            <div>
+                <label for="file">Choose photo to upload</label>
+                <input type="file" id="file" name="file">
+            </div>
+            <p class="reg_text">Text to photo:</p>
+            <textarea class="adding_text"></textarea>
+            <div class="hash_div">
+            </div>
+            <div class="adding_bottom"><button class="add_hash">Add hashtag</button><button class="leave_button2">Leave</button><button class="go_button2">Move forward</button></div>
+        </div>
+    </div>
+    
     <div class="backgr" align="right">
         <div class="photo_area">
             <div class="fake"></div>
