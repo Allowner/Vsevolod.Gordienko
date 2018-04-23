@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Aldrich|Kurale|Lobster" rel="stylesheet">
+    <meta charset="utf-8">
+    <title> Page title </title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="body" onload="onLoad()">
+    <div class="wrap">
+        <div class="main">
+            <header class="header">
+                <div id="header">
+                    <p class="logo">
+                        <img src="images/fox.jpg" class="leftimg">Photo world</p>
+                    <div class="header_bar">
+                        <label class="login_label">Login</label>
+                        <button class="create_button">Add new photo</button>
+                        <button class="login_button">Log out</button>
+                    </div>
+                </div>
+            </header>
+            <section align="left" class="aside">
+                <p class="text">Enter login you seek</p>
+                <textarea class="textarea" name="login_field" align="center" placeholder="Login">
+</textarea>
+                <p class="text">Enter hashtag you seek</p>
+                <textarea class="textarea" name="hash_field" align="center" placeholder="Hashtag1 Hashtag2">
+</textarea>
+                <p class="text">Enter date</p>
+                <textarea class="textarea" name="date_field" align="center" placeholder="dd/mm/yy">
+</textarea>
+                <button class="find_button" align="center">Search</button>
+            </section>
+            <div class="register">
+                <div class="register_form">
+                    <div class="register_head">
+                        <p class="register_h2">Autorization</p>
+                    </div>
+                    <p class="reg_text">Enter login:</p>
+                    <input id="enter_login" class="reg_text" type="text" size="20">
+                    <p class="reg_text">Enter password:</p>
+                    <input id="enter_password" type="password" class="reg_text" type="text" size="20">
+                    <p class="register_bottom">
+                        <button class="leave_button">Leave</button>
+                        <button class="go_button">Move forward</button>
+                    </p>
+                </div>
+            </div>
+            <div class="error">
+                <div class="error_logo">
+                    <p class="error_logo_text"> Error</p>
+                </div>
+                <div class="error_text">
+                    <p class="error_main_text">Some text</p>
+                </div>
+                <div class="error_butt">
+                    <button class="error_button">OK</button>
+                </div>
+            </div>
+            <div class="adding">
+                <div class="adding_form">
+                    <div class="adding_head">
+                        <div><h3 class="adding_log">Username</div>
+                        <div><h3 class="adding_date">Date</h3></div>
+                    </div>
+                    <div>
+                        <label class="label_for_file">Choose photo to upload</label>
+                        <label for="file" id="file_label"></label>
+                        <input type="file" id="file">
+                    </div>
+                    <p class="reg_text">Text to photo:</p>
+                    <textarea class="adding_text"></textarea>
+                    <div class="hash_div" align="left">
+                    </div>
+                    <div class="adding_bottom">
+                        <input type="text" name="add_hash_field" size="21" placeholder="New hash">
+                        <button class="add_hash">Add hashtag</button>
+                        <button class="add_hash" name="rem_hash">Remove hashtag</button>
+                        <button class="leave_button2">Leave</button>
+                        <button class="go_button2">Move forward</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="backgr" align="right">
+                <div class="photo_area">
+                    <div class="fake"></div>
+                </div>
+                <div>
+                    <button class="add_button">Download more</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="footer" class="content">
+        PhotoWorld Всеволод 2 курс 12 группа se1999va@tut.by 05/03/2018
+    </footer>
+
+</body>
+
+<script src="script.js"></script>
+
+
+</html>

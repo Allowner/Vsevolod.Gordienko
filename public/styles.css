@@ -1,0 +1,432 @@
+.body {
+	margin: 0;
+	padding: 0;
+}
+html,
+body {
+    height: 100%;
+}
+.header{
+	width: 100%;
+	position: fixed;
+	height: 6vh;
+	background-color: #cbc5c7	
+}
+.logo{
+	margin-top: 0px;
+	position: absolute;
+    left: 15%;
+	font-family: Aldrich;
+	font-size: 5vh;
+}
+.text{
+	text-align: center;
+	margin-bottom: 0px;
+	font-size: 2.5vh;
+	font-family: Aldrich;
+}
+.aside{
+	margin-top: 6vh;
+	margin-bottom: 6vh;
+	position: fixed;
+    background: #ffbe7d;
+    width: 15%;
+}
+.footer{
+	background-color: #cbc5c7;
+	bottom: 0px;
+	height: 10vh;
+	left: 0;
+	right: 0;
+	color: black;
+	font-size: 3vh;
+	font-family: Aldrich;
+	text-align: center;
+}
+.wrap {
+    min-height: 100%;
+}
+footer {
+    margin-top: -10vh;
+}
+.main {
+	padding-bottom: 10vh;
+}
+.header_bar{
+	height: 6vh;
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	font-size: 3vh;
+}
+
+.logo_bar{
+	height: 6vh;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	font-size: 3vh;
+}
+
+.login_label{
+	height: 6vh;
+	font-size: 3vh;
+	padding-right: 10vh;
+}
+
+.login_button{
+	height: 6vh;
+	font-size: 3vh;
+
+}
+
+.create_button{
+	height: 6vh;
+	font-size: 3vh;
+}
+
+.undisplayable{
+	display: none;
+}
+
+.find_button{
+	height: 8vh;
+	width: 16vh;
+	color: black;
+	display:block;
+	position: relative;
+	background: #f87b38;
+	border: 1px solid black;
+	margin:0 auto;
+	margin-top: 6vh;
+	margin-bottom: 6vh;
+}
+.adding{
+	position: fixed;
+	z-index: 1;
+	margin: auto;
+	width: 100%;
+	height: 100%; 
+	background-color: beige;
+}
+.adding_form{
+	font-family: Aldrich;
+	box-shadow: -5px 5px 5px -2px;
+	position: fixed;
+	text-align: center;
+	z-index: 1;
+	top: 10%;
+	left: 27.5%;
+	width: 90vh;
+	height: 80vh;	
+	border: 0.25px solid black;
+}
+
+.adding_head{
+	padding-bottom: 3vh;
+	height: 7vh;
+}
+.adding_text{
+    width: 90%; 
+    height: 12vh; 
+    resize: none; 
+} 
+.adding_bottom{
+	float: right;
+	margin-bottom: 0;
+}
+.log_date{
+	margin: 0;
+	padding-top: 2.5vh;
+}
+.register{
+	position: fixed;
+	z-index: 1;
+	margin: auto;
+	width: 100%;
+	height: 100%; 
+	background-color: beige;
+}
+.register_form{
+	font-family: Aldrich;
+	box-shadow: -5px 5px 5px -2px;
+	position: fixed;
+	text-align: center;
+	z-index: 1;
+	top: 20%;
+	left: 40%;
+	width: 40vh;
+	height: 50vh;	
+	border: 0.25px solid black;
+}
+.register_head{
+	height: 10vh;
+	text-align: center;
+	color: #1c0c4f;
+	background-color: #0844a4;
+	font-size: 4vh;
+}
+.register_h2{
+	margin: 0;
+	padding-top: 2.5vh;
+}
+.register_bottom{
+	margin-top: 9vh;
+}
+
+.leave_button{
+	font-family: Aldrich;
+	border-radius: 4px;
+	margin-right: 3vh;
+	margin-left: 4vh;
+}
+
+.leave_button2{
+	font-family: Aldrich;
+	border-radius: 4px;
+	margin-right: 2vh;
+}
+
+.add_hash{
+	font-family: Aldrich;
+	border-radius: 4px;
+	margin-right: 2vh;
+	
+}
+
+.go_button{
+	font-family: Aldrich;
+	border-radius: 4px;
+	margin-right: 2vh;
+}
+
+.go_button2{
+	font-family: Aldrich;
+	border-radius: 4px;
+	margin-right: 3.5vh;
+}
+
+.hash_div{
+	padding-bottom: 0.5vh;
+	height: 10%;
+	width: auto;
+}
+
+.hash_style{
+	display: inline-block;
+	margin-left: 4vh;
+	font-size: 2vh;
+}
+
+.error{
+	font-family: Aldrich;
+	box-shadow: -5px 5px 5px -2px;
+	position: fixed;
+	text-align: center;
+	z-index: 10;
+	top: 0%;
+	left: 22.5%;
+	width: 110vh;
+	height: 8vh;	
+	border: 0.25px solid black;
+	background-color: #b70f0a;
+}
+
+.error_logo{
+	height: 8vh;
+	float: left;
+	width: 10%;
+}
+
+.error_logo_text{
+	padding-left: 15%;
+	margin-top: 1.8vh;
+	font-style: italic;
+	font-size: 4vh;
+}
+
+.error_text{
+	text-align: left;	
+	padding-right: 1%;
+	padding-left: 5%;
+	height: 8vh;
+	float: left;
+	width: 70%;
+}
+
+.error_main_text{
+	margin-top: 2.5vh;
+	padding-left: 2%;
+	font-size: 3vh;
+	background-color: #ffdad8;
+	color: #b70f0a;
+}
+
+.error_butt{
+	padding-right: 1%;
+	height: 8vh;
+	float: left;
+	width: 5%;
+}
+
+.error_button{
+	font-family: Aldrich;
+	font-style: italic;
+	margin-top: 2.2vh;
+	width: 13vh;
+	height: 4vh;
+	border-radius: 0.8vh;
+	border-width: 0px;
+}
+
+.photo{
+	width: 85%; 
+    background: beige; 
+	text-align: left;
+}
+.photo_parameters{
+	padding-left: 30vh;
+    padding-top: 5vh;
+    height: 48%;
+    width: 65%;
+    float: left;
+}
+.delete_button_parameters{
+	height: 3vh;
+	width: 3vh;
+	float: right;
+	background-image: url('images/delete.png');
+	background-size: 2.5vh 2.5vh;
+	padding: 0;
+}
+
+.like_button_parameters{
+	height: 5vh;
+	width: 5vh;
+	float: right;
+	background: white;
+	background-image: url('images/like.png');
+	background-size: 4.5vh 4.5vh;
+	padding: 0;
+}
+
+.change_like{
+	background-color: #ffbe7d;
+	border-color:  #ffbe7d;
+}
+
+.edit_button_parameters{
+	height: 5vh;
+	width: 5vh;
+	float: right;
+	background-image: url('images/edit.png');
+	background-size: 4.5vh 4.5vh;
+}
+
+.text_photo{
+	padding-left: 1vh;
+    padding-top: 0vh;
+    padding-right: 0vh;
+    margin-left: 30vh;
+    display: inline-block;
+    width: 64.4%;
+    height: 30vh;
+    background-color: white;
+}
+.add_button{
+	text-align: center;
+	width: 85%; 
+	height: 4vh;
+	background-color: #ffbe7d;
+	border-color: black;
+}
+.textarea {
+	-webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+	box-sizing: border-box;
+	margin-left: 1.5vh;
+    width: 92%;
+	height: 4vh;
+	font-size: 2.5vh;
+	resize: none;
+}
+.fake{
+	height: 6vh;
+}
+.photo_login{
+	font-family: Kurale;
+	float: left;
+	font-size: 2.5vh;
+}
+.date{
+	font-family: Aldrich;
+	float: right;
+	font-size: 2.5vh;
+}
+.text_header{
+	height: 6vh;
+}
+.main_text{
+	font-family: Lobster;
+	height: 62%;
+	width: 100%;
+	float: left;
+	font-size: 2.5vh;
+}
+.hash{
+	padding-right: 2vh; 
+}
+.main_text_div{
+	width: 100%;
+	height: 83%;
+}
+.hash_icon_div{
+	width: 100%;
+	height: 20%;
+}
+.reg_text{
+	font-size: 2vh;
+	text-align: center;
+}
+.label_for_file{
+	margin-left: 4vh;
+	margin-right: 4vh;
+}
+.leftimg {
+    float:left;
+	margin: 0px 20px 0px 0;
+	width: 4vh;
+	height: 6vh;
+}
+
+#file_label {
+	display: inline-block;
+	width: 60vh;
+	height: 33.7vh;
+	background: silver;
+	background-image: url("images/camera.png");
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+  }
+  
+#file {
+display: none;
+}	
+	
+.adding_log{
+	width: 30%;
+	float: left;
+	text-align: left;
+	padding-left: 10%;
+}
+	
+.adding_date{
+	width: 50%;
+	float: right;
+}	
+	
+	
+	
+	
+	
