@@ -105,27 +105,33 @@ var photoPosts = [
     }
 ];
 
-var photoPostsString = JSON.stringify(photoPosts);
-localStorage.setItem("photoPosts", photoPostsString);
-
 var photoPostsString2 = localStorage.getItem("photoPosts");
 var photoPosts2 = JSON.parse(photoPostsString2);
+
+var photoPostsString = JSON.stringify(photoPosts);
+if(localStorage.getItem("photoPosts") == null){
+    localStorage.setItem("photoPosts", photoPostsString);
+}
 
 var firstModule = (function () {
     function getPhotoPost(id) {
         var photoPostsString2 = localStorage.getItem("photoPosts");
         var photoPosts2 = JSON.parse(photoPostsString2);
-        for (var i = 0; i < photoPosts.length; i++) {
-            if (photoPosts[i].id == id)
-                return photoPosts[i];
+        for (var i = 0; i < photoPosts2.length; i++) {
+            if (photoPosts2[i].id == id)
+                return photoPosts2[i];
         }
     }
     function compareDate(a, b) {
         return b.createdAt - a.createdAt;
     }
     function getPhotoPosts(skip = 0, top = 10, filterConfig) {
-        photoPosts.sort(compareDate);
-        var positiveArr = photoPosts;
+        var photoPostsString2 = localStorage.getItem("photoPosts");
+        var photoPosts2 = JSON.parse(photoPostsString2);
+        photoPosts2.sort(function(obj1, obj2) {
+            return Date.parse(obj2.createdAt)-Date.parse(obj1.createdAt);
+        });
+        var positiveArr = photoPosts2;
         if (filterConfig) {
             if (filterConfig.author) {
                 positiveArr = positiveArr.filter(function (param) {
@@ -134,17 +140,16 @@ var firstModule = (function () {
                 });
             }
             if (filterConfig.createdAt) {
-                alert(filterConfig.createdAt.toDateString());
                 positiveArr = positiveArr.filter(function (param) {
-                    if (param.createdAt.toDateString == filterConfig.createdAt.toDateString())
-                        return param
+                    if (new Date(param.createdAt).valueOf() >= new Date(filterConfig.createdAt).valueOf())
+                        return param;
                 });
             }
             if (filterConfig.hashtags) {
                 for (var i = 0; i < filterConfig.hashtags.length; i++) {
                     positiveArr = positiveArr.filter(function (param) {
                         if (param.hashtags.indexOf(filterConfig.hashtags[i]) != -1)
-                            return param
+                            return param;
                     });
                 }
             }
@@ -153,18 +158,22 @@ var firstModule = (function () {
     }
     function addPhotoPost(photoPost) {
         if (validatePhotoPost(photoPost)) {
-            photoPosts.push(photoPost);
-            photoPostsString = JSON.stringify(photoPosts);
+            var photoPostsString2 = localStorage.getItem("photoPosts");
+            var photoPosts2 = JSON.parse(photoPostsString2);
+            photoPosts2.push(photoPost);
+            photoPostsString = JSON.stringify(photoPosts2);
             localStorage.setItem("photoPosts", photoPostsString);
             return true;
         }
         return false;
     }
     function removePhotoPost(id) {
-        for (var i = 0; i < photoPosts.length; i++) {
-            if (photoPosts[i].id == id) {
-                photoPosts.splice(i, 1);
-                photoPostsString = JSON.stringify(photoPosts);
+        var photoPostsString2 = localStorage.getItem("photoPosts");
+        var photoPosts2 = JSON.parse(photoPostsString2);
+        for (var i = 0; i < photoPosts2.length; i++) {
+            if (photoPosts2[i].id == id) {
+                photoPosts2.splice(i, 1);
+                photoPostsString = JSON.stringify(photoPosts2);
                 localStorage.setItem("photoPosts", photoPostsString);
                 return true;
             }
@@ -173,17 +182,17 @@ var firstModule = (function () {
     }
 
     function validatePhotoPost(photoPost, isNew = true) {
-
+        var photoPostsString2 = localStorage.getItem("photoPosts");
+        var photoPosts2 = JSON.parse(photoPostsString2);
         if (!photoPost.id)
             return false;
         else {
             if (typeof (photoPost.id) != "string" || photoPost.id < 0)
                 return false;
             if (isNew == true) {
-                for (var i = 0; i < photoPosts.length; i++)
-                    if (photoPosts[i].id == photoPost.id)
+                for (var i = 0; i < photoPosts2.length; i++)
+                    if (photoPosts2[i].id == photoPost.id)
                         return false;
-
             }
         }
         if (!photoPost.createdAt) {
@@ -233,6 +242,8 @@ var firstModule = (function () {
             return false;
         }
         else {
+            photoPostsString = JSON.stringify(photoPosts);
+            localStorage.setItem("photoPosts", photoPostsString);
             return true;
         }
     }
@@ -348,6 +359,7 @@ var secondModule = (function () {
         for (var i = 0; i < array.length; ++i) {
             insertToDOM(array[i])
         }
+        current_size_of_DOM = array.length;
     }
 
     function firstPhotoPosts() {
@@ -357,9 +369,11 @@ var secondModule = (function () {
     function addPhotoPostToDOM(photoP) {
         var changed = false;
         var photoDOM = firstModule.getPhotoPosts(0, current_size_of_DOM);
+        alert(photoP.createdAt);
         if (firstModule.addPhotoPost(photoP)) {
             for (var i = 0; i < current_size_of_DOM; ++i) {
-                if (firstModule.compareDate(photoDOM[i], photoP) >= 0) {
+                alert(photoP.descriprion);
+                if (new Date(photoP.createdAt).valueOf() >= new Date(photoDOM[i].createdAt).valueOf()) {
                     changed = true;
                     var photo = document.getElementById(photoDOM[i].id);
                     insertToDOM(photoP, photo);
@@ -564,6 +578,12 @@ function createNewPostClick() {
             secondModule.editPhotoPostInDOM(isNewId, newPhotoPost);
             isNewId == '0';
         }
+        delete_buttons = document.getElementsByClassName("delete_button_parameters");
+        edit_buttons = document.getElementsByClassName("edit_button_parameters");
+        like_buttons = document.getElementsByClassName("like_button_parameters");
+        delete_buttons[0].addEventListener('click', deleteButtonClick);
+        edit_buttons[0].addEventListener('click', editClick);
+        like_buttons[0].addEventListener('click', likeClick);
         adding_form.classList.add("undisplayable");
     }
     clearAddingForm();
@@ -611,6 +631,7 @@ function authorizeClick() {
 }
 
 function downloadButtonClick() {
+    alert(current_size_of_DOM);
     var array = firstModule.getPhotoPosts(current_size_of_DOM, current_size_of_DOM + 10, filter);
     secondModule.showPhotoPosts(array);
     current_size_of_DOM += array.length;
@@ -680,12 +701,15 @@ function findClick() {
     if (author != "")
         filterConfig.author = author;
     if (hashtags != "") {
+        hashtags = hashtags.trim();
         var hashes = hashtags.split(" ");
         filterConfig.hashtags = hashes;
     }
     if (date != "") {
+        var tokens = date.split("/");
+        date = tokens[1] + "/" + tokens[0] + "/" + tokens[2];
         var created = new Date(date)
-        alert(created);
+        //alert(created);
         filterConfig.createdAt = created;
     }
     var photos = document.getElementsByClassName("photo");
