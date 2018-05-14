@@ -53,7 +53,7 @@ var photoPosts = [
         id: '5',
         descriprion: '5Женская сборная Беларуси выиграла эстафету в рамках соревнований по биатлону на Олимпийских играх в Пхёнчхане!!!',
         createdAt: new Date('2013-02-23T23:00:00'),
-        author: 'Иванов Иван',
+        author: 'Seva',
         photoLink: "images/fifth.jpeg",
         hashtags: ['#first', '#second'],
         likes: ['aut1', 'aut2']
@@ -106,9 +106,6 @@ var photoPosts = [
 ];
 
 var prevLog = localStorage.getItem("login");
-if(prevLog != null){
-    user = prevLog;
-}
 
 var photoPostsString2 = localStorage.getItem("photoPosts");
 var photoPosts2 = JSON.parse(photoPostsString2);
@@ -553,7 +550,7 @@ function clearAddingForm(){
     newPicture.src = "";
     adding_text.value = "";
     var hashes = document.getElementsByClassName("hash_style");
-    for(var i = 0; i < hashes.length; ++i){
+    while(hashes.length != 0){
         removeHashClick();
     }
     document.getElementsByName("add_hash_field")[0].value = "";
@@ -589,6 +586,7 @@ function createNewPostClick() {
         }
         else{
             newPhotoPost.id = isNewId;
+            newPhotoPost.photoLink = null;
             secondModule.editPhotoPostInDOM(isNewId, newPhotoPost);
             isNewId == '0';
         }
@@ -651,6 +649,14 @@ function downloadButtonClick() {
     var temp = current_size_of_DOM;
     var array = firstModule.getPhotoPosts(current_size_of_DOM, current_size_of_DOM + 10, filter);
     secondModule.showPhotoPosts(array);
+    delete_buttons = document.getElementsByClassName("delete_button_parameters");
+    edit_buttons = document.getElementsByClassName("edit_button_parameters");
+    like_buttons = document.getElementsByClassName("like_button_parameters");
+    for (var i = 0; i < delete_buttons.length; i++) {
+        delete_buttons[i].addEventListener('click', deleteButtonClick);
+        edit_buttons[i].addEventListener('click', editClick);
+        like_buttons[i].addEventListener('click', likeClick);
+    }
     current_size_of_DOM += temp + array.length;
     max_size_of_DOM += 10;
 }
@@ -768,11 +774,11 @@ document.querySelector("#file").addEventListener("change", function () {
 
 function onLoad() {
     secondModule.firstPhotoPosts();
-    if(user != null){
-        secondModule.newUser(user);
+    secondModule.leave();
+    if(prevLog != null){
+        secondModule.newUser(prevLog);
+        localStorage.setItem("login", prevLog);
     }
-    else
-        secondModule.leave();
     register_form.classList.add("undisplayable");
     error_form.classList.add("undisplayable");
     adding_form.classList.add("undisplayable");

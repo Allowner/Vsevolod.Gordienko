@@ -184,14 +184,11 @@ footer {
 .leave_button2{
 	font-family: Aldrich;
 	border-radius: 4px;
-	margin-right: 2vh;
 }
 
 .add_hash{
 	font-family: Aldrich;
 	border-radius: 4px;
-	margin-right: 2vh;
-	
 }
 
 .go_button{
@@ -203,7 +200,7 @@ footer {
 .go_button2{
 	font-family: Aldrich;
 	border-radius: 4px;
-	margin-right: 3.5vh;
+	margin-right: 2.5vh;
 }
 
 .hash_div{
