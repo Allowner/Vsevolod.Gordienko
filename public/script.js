@@ -105,6 +105,11 @@ var photoPosts = [
     }
 ];
 
+var prevLog = localStorage.getItem("login");
+if(prevLog != null){
+    user = prevLog;
+}
+
 var photoPostsString2 = localStorage.getItem("photoPosts");
 var photoPosts2 = JSON.parse(photoPostsString2);
 
@@ -242,8 +247,8 @@ var firstModule = (function () {
             return false;
         }
         else {
-            photoPostsString = JSON.stringify(photoPosts);
-            localStorage.setItem("photoPosts", photoPostsString);
+            removePhotoPost(id);
+            addPhotoPost(post);
             return true;
         }
     }
@@ -369,10 +374,8 @@ var secondModule = (function () {
     function addPhotoPostToDOM(photoP) {
         var changed = false;
         var photoDOM = firstModule.getPhotoPosts(0, current_size_of_DOM);
-        alert(photoP.createdAt);
         if (firstModule.addPhotoPost(photoP)) {
             for (var i = 0; i < current_size_of_DOM; ++i) {
-                alert(photoP.descriprion);
                 if (new Date(photoP.createdAt).valueOf() >= new Date(photoDOM[i].createdAt).valueOf()) {
                     changed = true;
                     var photo = document.getElementById(photoDOM[i].id);
@@ -449,15 +452,26 @@ var secondModule = (function () {
         var elem = document.getElementsByClassName('create_button')[0];
         elem.classList.remove("undisplayable");
         var arr = document.getElementsByClassName('delete_button_parameters');
-        for (var i = 0; i < arr.length; ++i)
-            arr[i].classList.remove("undisplayable");
-        arr = document.getElementsByClassName('edit_button_parameters');
-        for (var i = 0; i < arr.length; ++i)
-            arr[i].classList.remove("undisplayable");
+        var arr2 = document.getElementsByClassName('edit_button_parameters');
+        var photoPostsString2 = localStorage.getItem("photoPosts");
+        var photoPosts2 = JSON.parse(photoPostsString2);
+        for (var i = 0; i < arr.length; ++i){
+            var photoPostId = arr[i].parentNode.parentNode.parentNode.id;
+            for (var j = 0; j < photoPosts2.length; ++j){
+                if(photoPosts2[j].id == photoPostId){
+                    if(photoPosts2[j].author == user){
+                        arr[i].classList.remove("undisplayable");
+                        arr2[i].classList.remove("undisplayable");
+                        break;
+                    }     
+                }
+            }
+        }  
     }
 
     function leave() {
         user = null;
+        localStorage.removeItem("login")
         turnOfElements();
     }
 
@@ -592,20 +606,22 @@ function createNewPostClick() {
 function editClick(event) {
     adding_form.classList.remove("undisplayable");
     var phP = event.target.parentNode.parentNode.parentNode.parentNode;
-    for (var i = 0; i < photoPosts.length; i++) {
-        if (phP.id == photoPosts[i].id) {
-            document.getElementsByClassName('adding_log')[0].innerText = photoPosts[i].author;
-            document.getElementsByClassName('adding_date')[0].innerText = secondModule.dateString(photoPosts[i].createdAt);
+    var photoPostsString2 = localStorage.getItem("photoPosts");
+    var photoPosts2 = JSON.parse(photoPostsString2);
+    for (var i = 0; i < photoPosts2.length; i++) {
+        if (phP.id == photoPosts2[i].id) {
+            document.getElementsByClassName('adding_log')[0].innerText = photoPosts2[i].author;
+            document.getElementsByClassName('adding_date')[0].innerText = secondModule.dateString(photoPosts2[i].createdAt);
             var container = document.getElementsByClassName("hash_div")[0];
-            for(var j = 0; j < photoPosts[i].hashtags.length; ++j){
+            for(var j = 0; j < photoPosts2[i].hashtags.length; ++j){
                 var labl = document.createElement('label');
                 labl.classList.add('hash_style');
-                labl.innerText = photoPosts[i].hashtags[j];
+                labl.innerText = photoPosts2[i].hashtags[j];
                 container.appendChild(labl);
             }
-            adding_text.value = photoPosts[i].descriprion;
-            document.querySelector("#file_label").style.backgroundImage = "url(" + photoPosts[i].photoLink + ")";
-            isNewId = photoPosts[i].id;
+            adding_text.value = photoPosts2[i].descriprion;
+            document.querySelector("#file_label").style.backgroundImage = "url(" + photoPosts2[i].photoLink + ")";
+            isNewId = photoPosts2[i].id;
         }
     }
 }
@@ -625,16 +641,17 @@ function authorizeClick() {
     else {
         register_form.classList.add("undisplayable");
         secondModule.newUser(text_area_1);
+        localStorage.setItem("login", text_area_1);
         document.getElementById('enter_login').value = "";
         document.getElementById('enter_password').value = "";
     }
 }
 
 function downloadButtonClick() {
-    alert(current_size_of_DOM);
+    var temp = current_size_of_DOM;
     var array = firstModule.getPhotoPosts(current_size_of_DOM, current_size_of_DOM + 10, filter);
     secondModule.showPhotoPosts(array);
-    current_size_of_DOM += array.length;
+    current_size_of_DOM += temp + array.length;
     max_size_of_DOM += 10;
 }
 
@@ -708,8 +725,9 @@ function findClick() {
     if (date != "") {
         var tokens = date.split("/");
         date = tokens[1] + "/" + tokens[0] + "/" + tokens[2];
-        var created = new Date(date)
-        //alert(created);
+        var created = new Date(date);
+        if(created == "Invalid Date")
+            showError(created);
         filterConfig.createdAt = created;
     }
     var photos = document.getElementsByClassName("photo");
@@ -720,6 +738,16 @@ function findClick() {
     }
     photos = firstModule.getPhotoPosts(0, 10, filterConfig);
     secondModule.showPhotoPosts(photos);
+    delete_buttons = document.getElementsByClassName("delete_button_parameters");
+    edit_buttons = document.getElementsByClassName("edit_button_parameters");
+    like_buttons = document.getElementsByClassName("like_button_parameters");
+    for (var i = 0; i < 10; i++) {
+        delete_buttons[i].addEventListener('click', deleteButtonClick);
+        edit_buttons[i].addEventListener('click', editClick);
+        like_buttons[i].addEventListener('click', likeClick);
+    }
+    current_size_of_DOM = 10
+    max_size_of_DOM = current_size_of_DOM
     if (user == null) {
         secondModule.turnOfElements();
     }
@@ -740,7 +768,11 @@ document.querySelector("#file").addEventListener("change", function () {
 
 function onLoad() {
     secondModule.firstPhotoPosts();
-    secondModule.leave();
+    if(user != null){
+        secondModule.newUser(user);
+    }
+    else
+        secondModule.leave();
     register_form.classList.add("undisplayable");
     error_form.classList.add("undisplayable");
     adding_form.classList.add("undisplayable");
